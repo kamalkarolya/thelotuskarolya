@@ -1,0 +1,126 @@
+  /* HEADER */
+header div img{
+    width: 28vw;
+} 
+ 
+ 
+    /* HOME */
+#home{
+    padding-bottom: 0px;
+    flex-direction: column;
+    text-align-last: center;
+    margin: 27px;
+ 
+}
+#btn{
+    width: 25.66vw;
+    height: 6vw;
+    padding: 1.09vw;
+}
+
+#home div h1{
+    font-size: 1.8rem;
+}
+@media screen and (max-width: 528px){
+     #btn{
+        padding: 3px;
+        width: 140px;
+        height: 23px ;
+    }
+    #home div h1{
+        font-size: 20px;
+    }
+    #feedback div{
+        width: -webkit-fill-available;
+    
+    }
+}
+#home div{
+    padding-bottom: 50px;
+}
+#home div p{
+    text-align: center;
+    width: auto;
+}
+
+   /* CONTENT */
+#content{
+    text-align: center;
+    padding: 10.44vw 5.32vw 4.07vw 5.32vw;
+    margin: 14.41vw 4.67vw 6.87vw 4.67vw;
+    flex-direction: column-reverse;
+}
+#content div p{
+    width: unset;
+}
+  /* CONTENT 1 */
+#content1{
+    text-align: center;
+    flex-direction: column;
+    padding: 10.44vw 5.32vw 4.07vw 5.32vw;
+    margin: 6.87vw 4.67vw 4.87vw 4.67vw;
+}
+#content1 div p{
+    width: unset;
+}
+  /* CONTENT 2 */
+#content2{
+    text-align: center;
+    padding: 10.44vw 5.32vw 4.07vw 5.32vw;
+    margin: 6.87vw 4.67vw 8.87vw 4.67vw;
+    flex-direction: column-reverse;
+}
+#content2 div p {
+    width: unset;
+}
+.content-image{
+    text-align: center;
+}
+  /* FEEDBACK */
+#feedback div{
+    padding: 36px 17px;
+
+    font-size: 0.6rem;
+    margin: 60px 10px -50px 10px;
+}
+   /* FOOTER */
+#footerbox{
+    flex-direction: column;
+
+}
+#footerbox div p{
+    
+    padding: 15px 1px 15px 15px;
+}
+#footerbox div div span{
+    padding: 3px 15px 0px 0px;
+}
+.footer-logo{
+    margin: 0px;
+    padding: 100px 25px 25px 25px;
+}
+.footer-logo img{
+    width: 39vw;
+}
+.leftmost {
+    width: 85%;
+  }
+  .left,
+  .right {
+    width: auto;
+  }
+   /* FOOTER */
+.copyright{
+    padding: 15px 15px 30px 15px ;
+    text-align: center;
+}
+.rightmost{
+    align-self: center;
+}
+#footerbox div p a{
+    padding: 7px;
+}
+#footerbox div div span img{
+    width: 19px;
+}
+
