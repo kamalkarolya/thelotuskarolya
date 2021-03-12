@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Kamal kumar and Bootstrap contributors">
+ <link rel="icon" type="image/png"  href="media/logo2.svg" />
+  <script src="https://kit.fontawesome.com/680f28dc17.js" crossorigin="anonymous"></script>
+
+  <title> Karolya | Registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="css/register.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container">
+    <main>
+      <div class="py-5 head text-center">
+
+        <!-- <img class="d-block mx-auto mb-4" src="../-logo.svg" alt="" width="72" height="57"> -->
+        <div class="header">
+          <h1>₭₳Ɽ<i class="fas fa-radiation-alt fa-2x fa-spin spinner "></i>ⱠɎ₳</h1>
+          {{!-- <p class="lead"> CO101 Project <br> KAMAL KUMAR 2K20/B15/74 <br> UTKARSH GARG 2K20/B15/76 </p> --}}
+
+        </div>
+      </div>
+      {{!-- action="/register" method="POST" --}}
+      <div class="row g-3">
+        <div class="col-md-7 col-lg-8">
+          <h3 class="mb-3">Registration </h3>
+          <form class="needs-validation" action="/register" method="POST" novalidate>
+            {{!-- <form action="/register" method="POST"></form> --}}
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">First name</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Your First Name" value=""
+                  required>
+                <div class="invalid-feedback">
+                  First name is required.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Your Last Name" value="">
+
+              </div>
+              <div class="col-md-12">
+                <label for="gender" class="form-label">Gender</label>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
+                  <label class="form-check-label" for="male">
+                    Male
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
+                  <label class="form-check-label" for="female">
+                    Female
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" value="othrs" name="gender" id="others" required>
+                  <label class="form-check-label" for="others">
+                    Others
+                  </label>
+                </div>
+                <div class="invalid-feedback">
+                  Please select Gender.
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="phnumber" class="form-label">Contact Number</label>
+                <div class="input-group has-validation">
+                 
+                  <input type="number" class="form-control" id="phnumber" name="phnumber" size="10" maxlength="10"
+                    placeholder="Your Contact Number" required>
+                  <div class="invalid-feedback">
+                    Your Number is required.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="dob" class="form-label">Date Of Birth</label>
+                <div class="input-group has-validation">
+                  <input type="date" class="form-control" id="dob" name="dob" placeholder="xx/xx/xxxx" required>
+                  <div class="invalid-feedback">
+                    Your Date Of Birth is required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <div class="input-group has-validation">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                  <div class="invalid-feedback">
+                    Your Email is required.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Street " required>
+                <div class="invalid-feedback">
+                  Please enter your address.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment or suite">
+              </div>
+
+
+              <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <select class="form-select" id="state" name="state" required>
+                  <option value="">Choose...</option>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                  <option value="Daman and Diu">Daman and Diu</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Lakshadweep">Lakshadweep</option>
+                  <option value="Puducherry">Puducherry</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                <div class="invalid-feedback">
+                  City required.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="pincode" class="form-label">Pincode</label>
+                <input type="text" class="form-control" id="pincode" name="pincode" size="6" maxlength="6"
+                  placeholder="Pincode" required>
+                <div class="invalid-feedback">
+                  Pincode required.
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="save-info">
+              <label class="form-check-label" for="save-info">Save this information for next time</label>
+            </div>
+
+
+            <!--
+          <h3 class="mb-3">Payment Details</h3>
+
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" value="credit-card" checked required>
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input id="debit" name="paymentMethod" type="radio" value="debit-card" class="form-check-input" required>
+              <label class="form-check-label" for="debit">Debit card</label>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" value="paypal" class="form-check-input" required>
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cardholder" class="form-label">Card Holder Name</label>
+              <input type="text" class="form-control" id="cardholder" name="cardholder" placeholder="" required>
+              <small class="text-muted">Full name as displayed on card</small>
+              <div class="invalid-feedback">
+                Name on card is required
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cardnumber" class="form-label">Card number</label>
+              <input type="text" class="form-control" id="cardnumber" name="cardnumber" placeholder="" size="16" maxlength="16" required>
+              <div class="invalid-feedback">
+                Card number is required
+              </div>
+            </div>
+
+
+
+            <label  class="form-label">Expiration</label>
+            <div class="col-md-3">
+
+              <label for="expmonth" class="form-label">Month</label>
+              <select class="form-select" id="expmonth" name="expmonth" required>
+                <option value="">Choose</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>05</option>
+                <option>06</option>
+                <option>07</option>
+                <option>08</option>
+                <option>09</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid Month.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="expyear" class="form-label">Year</label>
+              <select class="form-select" id="expyear" name="expyear" required>
+                <option value="">Choose</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+                <option>32</option>
+                <option>33</option>
+                <option>34</option>
+                <option>35</option>
+
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid Year.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cardcvv" class="form-label">CVV</label>
+              <input type="password" class="form-control" name="cardcvv" id="cardcvv" placeholder="" size="3" maxlength="3"  required>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4"> -->
+
+            <button class="w-100 btn btn-primary btn-lg" onclick="alert('You Want to Submit the form')"
+              type="submit">Register</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    {{!-- <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; Copyright 2021 Karolya. All rights reserved. </p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer> --}}
+  </div>
+
+  <footer id="footer">
+    <div class="footer-logo">
+
+      <h1>₭₳Ɽ<i class="fas fa-radiation-alt  fa-spin spinner "></i>ⱠɎ₳</h1>
+      {{!-- <img src="media/logo.jpg" alt="this is image" height="25" width="25" /> --}}
+    </div>
+    <section id="footerbox">
+      <div class="leftmost">
+        <div>
+          <span><img src="media/icon-location.svg" alt=""></span>
+         New Delhi , INDIA
+        </div>
+
+        {{!-- <div class="phno."> <span> <img class="location" src="media/icon-phone.svg" alt=""></span>+1-543-123-4567</div> --}}
+        <div> <span> <img src="media/icon-email.svg" alt=""> </span>lotuskarolya@thelotuskarolya.com</div>
+      </div>
+      <div class="left">
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">What We Do</a></li>
+          <li><a href="#">FAQ</a></li>
+
+        </ul>
+      </div>
+      <div class="right">
+        <ul>
+          <li><a href="#">Career</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="rightmost">
+        <p class="icon"> <a href="https://github.com/kamalkarolya"><i class="fab fa-github"></i></a></p>
+        <p class="icon"> <a href="https://www.instagram.com/thelotuskarolya/"><i class="fab fa-instagram"></i></a></p>
+        <p class="icon"> <a href="https://twitter.com/KamalKarolya"><i class="fab fa-twitter"></i></a></p>
+      </div>
+    </section>
+    <div class="copyright">
+      &copy; Copyright 2021 Karolya. All rights reserved.</div>
+  </footer>
+  <script src="js/register.js"></script>
+</body>
+
+</html>
