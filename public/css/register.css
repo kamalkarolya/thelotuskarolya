@@ -53,137 +53,14 @@ ul{
 
 
 /* FOOTER */
-#footer {
-  line-height: 1.35!important;
-  margin-top: 15%;
-  background-color: hsl(192, 100%, 9%);
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-logo {
-  display: flex;
-  padding: 35px 25px 25px 25px;
-  margin: 0vw 3.22vw;
-  
-}
-.footer-logo h1{
-  font-size: 3rem;
-  font-weight: 700;
-}
-#footerbox {
-  display: flex;
-  margin: 0vw 3.22vw;
-}
-#footerbox div {
-  padding: 1.09vw;
-}
-.leftmost {
-  width: 40%;
-}
-.left,
-.right {
-  width: 15%;
-}
-#footerbox li {
-  padding: 1.09vw 1.09vw 0.58vw 1.09vw;
-  list-style: none;
-}
-
-#footer div ul li a {
-  color: white;
-  text-decoration: none;
-}
-#footer div ul li a:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-#footerbox div div span {
-  padding: 0.21vw 1.09vw 0vw 0vw;
-}
-#footerbox div div {
-  display: flex;
-}
-.rightmost {
-  align-items: flex-start;
-  display: flex;
-}
-#footerbox div p {
-  padding: 1.09vw 0.07vw 1.09vw 1.09vw;
-  border-radius: 15px;
-}
-#footerbox div p a:hover {
-  color: hsl(322, 100%, 66%);
-  cursor: pointer;
-}
-.copyright {
-  font-size: 0.7rem;
-  padding: 5px;
-  text-align: end;
-}
-#footerbox div p a {
-  padding: 3px;
-  padding: 0.21vw;
-  color: white;
-  border: 1px solid white;
-  border-radius: 31px;
-}
-#footerbox div p a i {
-  width: 25px;
-  text-align: center;
-}
-@media (max-width: 900px) {
-
-  .head{
-    justify-content: center;
-  }
-     /* FOOTER */
-     
 #footer{
-  font-size: 16px;
-}
-#footerbox{
-  flex-direction: column;
-
-}
-#footerbox div p{
-  
-  padding: 15px 1px 15px 15px;
-}
-#footerbox div div span{
-  padding: 3px 15px 0px 0px;
+  margin-top: 10%!important;
 }
 .footer-logo{
-  margin: 0px;
-  padding: 35px 25px 25px 25px;
+  /* padding: 35px 25px 25px 25px !important ; */
+  padding: 0 25px 0px 25px !important;
 }
-.footer-logo img{
-  width: 39vw;
-}
-.leftmost {
-  width: 85%;
-}
-.left,
-.right {
-  width: auto;
-}
- /* FOOTER */
-.copyright{
-  padding: 15px 15px 30px 15px ;
-  text-align: center;
-}
-.rightmost{
-  align-self: center;
-}
-#footerbox div p a{
-  padding: 7px;
-}
-#footerbox div div span img{
-  width: 19px;
-}
+.btn-primary:hover {
+  background-color: #004dbd!important;
 
 }

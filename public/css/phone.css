@@ -12,11 +12,11 @@ header div img{
     margin: 27px;
  
 }
-#btn{
+/* #btn{
     width: 25.66vw;
     height: 6vw;
     padding: 1.09vw;
-}
+} */
 
 #home div h1{
     font-size: 1.8rem;
@@ -68,6 +68,9 @@ header div img{
     padding: 10.44vw 5.32vw 4.07vw 5.32vw;
     margin: 6.87vw 4.67vw 4.87vw 4.67vw;
 }
+#content1 img {
+    width: 64%;
+}
 #content1 div p{
     width: unset;
 }
@@ -91,7 +94,12 @@ header div img{
     font-size: 0.6rem;
     margin: 60px 10px -50px 10px;
 }
+#feedback div h1 {
+    font-size: 1.5rem;
+}
    /* FOOTER */
+        
+
 #footerbox{
     flex-direction: column;
 

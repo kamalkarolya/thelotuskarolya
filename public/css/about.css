@@ -1,16 +1,13 @@
 body{
-
+  font-size: 18px;
     font-family: "Open Sans";
   background-image: url(../media/bg-hero-desktop.svg);
   background-color: hsl(193, 100%, 96%)!important;
 }
-#message{
-  margin: 7vw ;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
+.heading{
+  display: flex;
+  margin: 37px;
+  justify-content: center;
 }
 /* FOOTER */
 #footer{

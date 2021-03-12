@@ -1,9 +1,12 @@
 body{
+ 
     font-family: "Open Sans";
   background-image: url(../media/bg-hero-desktop.svg);
   background-color: hsl(193, 100%, 96%)!important;
 }
 #message{
+  
+  margin: 7vw 0;
     display: flex;
     flex-wrap: wrap;
     align-content: center;

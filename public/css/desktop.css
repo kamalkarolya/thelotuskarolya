@@ -3,6 +3,7 @@
   padding: 0px;
 }
 body {
+  color: black!important;
   font-size: 18px;
   font-family: "Open Sans";
 }
@@ -29,7 +30,7 @@ header {
 header div {
   margin: 12px 3.66vw;
 }
-#btn {
+/* #btn {
   filter: drop-shadow(0px 3px 2px grey);
   outline: none;
   background-color: white;
@@ -49,12 +50,21 @@ header div {
 #btn:hover {
   opacity: 0.5;
   cursor: pointer;
-}
+} */
+.spinner{
+  
+  font-size: 2.5rem;
+   background:linear-gradient(to bottom, #b3ffab 0%, #12fff7 100%);; 
+   border-radius:224px ;
+} 
 #logo{
+
   filter: drop-shadow(6px 4px 8px grey);
   display: flex;
 }
 #logo h1{
+  font-weight: 600;
+  font-style: initial !important;
   font-size: 3rem;
 }
 /* HOME */
@@ -68,6 +78,7 @@ header div {
   text-align: end;
 }
 #home div h1 {
+  font-weight: 600;
   font-size: 3vw;
   padding-bottom: 30px;
 }
@@ -109,7 +120,7 @@ header div {
   padding: 3.44vw 1.46vw 3.07vw 7.32vw;
 }
 .content-image {
-  text-align: end;
+  text-align: center;
 }
 #content div h1 {
   padding-bottom: 30px;
@@ -125,9 +136,10 @@ header div {
 }
 /* CONTENT 1 */
 #content1 {
+  justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 2.63vw 4.67vw 0.87vw 4.67vw;
-  padding: 3.44vw 1.46vw 3.07vw 7.32vw;
+  padding: 3.44vw 8.46vw 3.07vw 7.32vw;
   background-color: white;
   align-items: center;
   display: flex;
@@ -142,8 +154,8 @@ header div {
 
   padding-bottom: 30px;
 }
-#content1 div img {
-  width: 65%;
+#content1 img {
+  width: 43%;
   height: auto;
 }
 /* CONTENT 2 */
@@ -197,16 +209,35 @@ header div {
   background-color: hsl(322, 100%, 66%);
   padding: 14px 50px;
   border: none;
-  border-radius: 25px;
+  border-radius: 55px;
   border-bottom: groove;
 }
 #feedback div button:hover {
   opacity: 0.5;
   cursor: pointer;
 }
+p ,ul{
+
+  margin-bottom: 0rem!important;
+}
+ul{
+  padding-left: 0rem!important;
+}
+
+/* FOOTER */
+/*
+
+.footer-logo {
+  padding: 90px 25px 25px 25px;
+}*/
+
+
+
 
 /* FOOTER */
 #footer {
+  line-height: 1.35!important;
+  padding-top: 4%;
   background-color: hsl(192, 100%, 9%);
   position: absolute;
   z-index: -1;
@@ -218,12 +249,13 @@ header div {
 
 .footer-logo {
   display: flex;
-  padding: 90px 25px 25px 25px;
+  padding: 35px 25px 25px 25px;
   margin: 0vw 3.22vw;
   
 }
 .footer-logo h1{
   font-size: 3rem;
+  font-weight: 700;
 }
 #footerbox {
   display: flex;
@@ -237,7 +269,7 @@ header div {
 }
 .left,
 .right {
-  width: 15%;
+  width: 18%;
 }
 #footerbox li {
   padding: 1.09vw 1.09vw 0.58vw 1.09vw;
@@ -279,16 +311,44 @@ header div {
   padding: 3px;
   padding: 0.21vw;
   color: white;
-  border: 1px solid white;
-  border-radius: 31px;
 }
 #footerbox div p a i {
-  width: 25px;
+  font-size: 1.5rem;
   text-align: center;
 }
-.spinner{
-  
-  font-size: 2.5rem;
-   background:linear-gradient(to bottom, #b3ffab 0%, #12fff7 100%);; 
-   border-radius:224px ;
+
+.trans{
+  background-color: #ffffff00;
+}
+.container-fluid{
+  padding: 0 3.66vw!important;
+}
+.collapse{
+  justify-content: flex-end;
+}
+.nav-link{ border-radius: 45px;
+  margin: 3px 19px;
+  font-size: 1.25em;
+  text-align: center;
+  padding: 0px 0.5rem!important;
+}
+.nav-link:hover{
+  color: white!important;
+}
+.nav-item{
+  border-radius: 45px;
+  margin: 0px 9px;
+}
+.nav-item:hover{
+ color: white!important;
+  background: #00252e;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-toggler {
+  outline: none;
+  font-size: 1rem;
+  border: none;
+  align-self: baseline;
 }
