@@ -1,0 +1,20 @@
+{
+  "name": "checkout",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "mongoose": "^5.11.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js -e js,hbs"
+  },
+  "keywords": [],
+  "author": "kamal",
+  "license": "ISC",
+  "description": ""
+}
