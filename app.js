@@ -8,20 +8,20 @@ const hbs = require("hbs");
 var mongoose = require('mongoose');
 const { Console } = require('console');
 
-// mongoose.connect('mongodb://localhost:27017/registrationform', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true}).then(()=>{
-//     console.log(`CONNECTED TO THE DATABASE!!`);
+ mongoose.connect('mongodb://localhost:27017/registrationform', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true}).then(()=>{
+     console.log(`CONNECTED TO THE DATABASE!!`);
 
-// }).catch((e)=>{
-//     console.log(`UNABLE TO CONNECT WITH DATABASE`);
-// })
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://kamalkarolya:<15034K@r0lya>@registration.bjkkk.mongodb.net/registrationform?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+ }).catch((e)=>{
+    console.log(`UNABLE TO CONNECT WITH DATABASE`);
+})
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://kamalkarolya:<15034K%40r0lya>@registration.bjkkk.mongodb.net/registrationform?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 //  DIRECTORY
  const static_path = path.join(__dirname, 'public');
@@ -39,9 +39,9 @@ client.connect(err => {
   
   
   // SERVER PORT NO.
-  const port =   process.env.PORT || 8000;
+  const port =   process.env.PORT || 3000;
   app.listen(port, ()=>{
-      console.log(`Server is Started at  http://localhost:${port}/`);
+      console.log(`Server is Running at  http://localhost:${port}/`);
   })
  
 //   FILES RENDERING
@@ -94,7 +94,11 @@ app.post('/index', (req, res)=>{
 // DATABASE SCHEMA
   
 const feedbackSchema = new mongoose.Schema({
-    feed:{
+    femail:{
+        type:String,
+        required:true
+   },
+   feed:{
         type:String,
         required:true
     }

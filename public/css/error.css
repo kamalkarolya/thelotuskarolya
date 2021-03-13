@@ -6,7 +6,7 @@ body{
 }
 #message{
   
-  margin: 7vw 0;
+  margin: 7vw 2vw;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
