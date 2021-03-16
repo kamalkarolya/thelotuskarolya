@@ -289,7 +289,7 @@ ul{
   cursor: pointer;
 }
 #footerbox div div span {
-  padding: 0.21vw 1.09vw 0vw 0vw;
+  padding: 0vw 1.09vw 0vw 0vw;
 }
 #footerbox div div {
   display: flex;
@@ -375,6 +375,7 @@ ul{
 }
      /* TIME */
      .clock { 
+       opacity: 0.9;
        color: black;
       -webkit-text-stroke-width: medium;
       justify-content: center;
@@ -387,6 +388,7 @@ ul{
     
       /* letter-spacing: 7px; */
     }
+   
   .even{
       box-shadow: 0 14px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
       padding: 12px;

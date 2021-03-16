@@ -64,6 +64,18 @@ app.get('/about', (req, res)=>{
     res.render('about')
 
 });
+app.get('/blog', (req, res)=>{
+    res.render('index')
+
+});
+app.get('/faq', (req, res)=>{
+    res.render('index')
+
+});
+app.get('/our work', (req, res)=>{
+    res.render('index')
+
+});
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
