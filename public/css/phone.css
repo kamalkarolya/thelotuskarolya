@@ -12,14 +12,14 @@ header div img{
     margin: 27px;
  
 }
-/* #btn{
-    width: 25.66vw;
-    height: 6vw;
-    padding: 1.09vw;
-} */
-
 #home div h1{
     font-size: 1.8rem;
+}
+@media screen and (max-width: 654px){
+    .clock{
+        font-size: 3rem;
+    }
+
 }
 @media screen and (max-width: 528px){
     #logo h1{
@@ -41,6 +41,19 @@ header div img{
     #feedback div{
         width: -webkit-fill-available;
     
+    }
+    .clock{
+        font-size: 2.3rem;
+    }
+}
+@media screen and (max-width: 414px){
+    .clock{
+        font-size: 1.8rem;
+    }
+}
+@media screen and (max-width: 390px){
+    .clock{
+        font-size: 1.5rem;
     }
 }
 #home div{

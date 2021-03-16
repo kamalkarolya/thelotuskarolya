@@ -374,31 +374,50 @@ ul{
   opacity: 0.5;
 }
      /* TIME */
-     .clock {
+     .clock { 
+       color: black;
+      -webkit-text-stroke-width: medium;
       justify-content: center;
       align-items: center;
       display: flex;
-      color: #17D4FE;
-      font-size: 60px;
+      font-size: 3.75rem;
+      /* font-size: 60px; */
       font-family: Orbitron;
-      letter-spacing: 7px;}
+    letter-spacing: 0.389rem;
+    
+      /* letter-spacing: 7px; */
+    }
   .even{
       box-shadow: 0 14px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
       padding: 12px;
       border-radius: 12px;
-      margin: 12px;
-      background-color:#0a0a67;
+      margin:  0.8784773060029283vw;
+      background-image: linear-gradient(
+        180deg
+        ,#2af598,#009efd);
+      
+      /* transform: skew(0, -15deg)  translate(-16rem, -7rem); */
+      /* background-color:#0a0a67; */
+
   }
   .odd{box-shadow: 0 14px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-      padding: 12px;
+      padding:  12px;
       border-radius: 12px;
-      margin: 12px;
+      /* margin: 12px; */
+      margin:  0.8784773060029283vw;
       color: black;
-      background-color: rgb(132, 132, 253);
+      /* background-color: rgb(132, 132, 253); */
+      background-image: linear-gradient(
+        0deg
+        ,#f959cd,#526cea);
+        animation: 4s ease-in 0s infinite alternate;
   }
   span{
       color: #635f5f;
   }
   #time4{
       letter-spacing: initial;
+  }
+  .anim{
+   animation: colorChange 4s ease-in 0s infinite alternate;
   }
