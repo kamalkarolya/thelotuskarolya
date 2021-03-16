@@ -375,9 +375,9 @@ ul{
 }
      /* TIME */
      .clock { 
+      font-weight: 600;
        opacity: 0.9;
        color: black;
-      -webkit-text-stroke-width: medium;
       justify-content: center;
       align-items: center;
       display: flex;
