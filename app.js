@@ -1,27 +1,26 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const bodyparser = require("body-parser");
+const bodyParser = require("body-parser");
 const hbs = require("hbs");
+let validator = require('validator');
 // const bootstrap = require('bootstrap');
 //  CONNECTION TO DATABASE
 var mongoose = require('mongoose');
 const { Console } = require('console');
+// UTILITIES
+//  "mongodb+srv://kamalkarolya:15034K%40r0lya@registration.bjkkk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  mongoose
+  .connect( 'mongodb://localhost:27017/test' , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
+ .then(()=>{
+      console.log(`CONNECTED TO THE DATABASE!!`);
 
- mongoose.connect('mongodb://localhost:27017/registrationform', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true}).then(()=>{
-     console.log(`CONNECTED TO THE DATABASE!!`);
-
- }).catch((e)=>{
+  }).catch((e)=>{
     console.log(`UNABLE TO CONNECT WITH DATABASE`);
-})
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://kamalkarolya:<15034K%40r0lya>@registration.bjkkk.mongodb.net/registrationform?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
+ })
+
+ 
+
 
 //  DIRECTORY
  const static_path = path.join(__dirname, 'public');
@@ -96,14 +95,19 @@ app.post('/index', (req, res)=>{
 const feedbackSchema = new mongoose.Schema({
     femail:{
         type:String,
-        required:true
+        required:true,
+        lowercase: true,
+    //  validate: (value) => {
+    //  return validator.isfemail(value)
+    //   }
    },
    feed:{
         type:String,
         required:true
     }
 });
-const Feedback = new mongoose.model('Feedback', feedbackSchema);
+ const Feedback = new mongoose.model('Feedback', feedbackSchema);
+module.exports = mongoose.model('Feedback',feedbackSchema )
 
 const registrationSchema = new mongoose.Schema({
     firstname:{
@@ -130,7 +134,11 @@ const registrationSchema = new mongoose.Schema({
     email:{
         type : String,
         required:true,
-        unique:true
+        unique:true,
+        lowercase: true
+    // validate: (value) => {
+    //   return validator.isemail(value)
+    // }
     },
     address:{
         type : String,
@@ -156,6 +164,6 @@ const registrationSchema = new mongoose.Schema({
     
   });
 
-  const Register = new mongoose.model('Register', registrationSchema);
-
+ const Register = new mongoose.model('Register',registrationSchema );
+module.exports = mongoose.model('Register',registrationSchema)
   
