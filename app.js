@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require("body-parser");
 const hbs = require("hbs");
 let validator = require('validator');
+var nodemailer = require('nodemailer');
 // const bootstrap = require('bootstrap');
 //  CONNECTION TO DATABASE
 var mongoose = require('mongoose');
@@ -177,5 +178,27 @@ const registrationSchema = new mongoose.Schema({
   });
 
  const Register = new mongoose.model('Register',registrationSchema );
-module.exports = mongoose.model('Register',registrationSchema)
+// module.exports = mongoose.model('Register',registrationSchema)
+//   EMAIL 
+// var transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'kamalkarolya@gmail.com',
+//       pass: 'hzebzrujlpmjgbom'
+//     }
+//   });
   
+//   var mailOptions = {
+//     from: 'kamalkarolya@gmail.com',
+//     to: 'kamalkumar_mc20b15_74@dtu.ac.in  ',
+//     subject: 'Thanks ',
+//     html: '<h1 >Welcome</h1><p>That was easy!</p>'
+//   };
+  
+//   transporter.sendMail(mailOptions, function(error, info){
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log('Email sent: ' + info.response);
+//     }
+//   });
