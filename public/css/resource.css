@@ -15,3 +15,10 @@ body{
 .footer-logo{
   padding: 0 25px 0px 25px !important;
 }
+.box{
+  padding-bottom: 10vw;
+  margin: auto;
+    width: 80%;
+    display: flex;
+    text-align: justify;
+}

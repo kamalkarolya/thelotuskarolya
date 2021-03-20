@@ -21,6 +21,13 @@ body {
   background: url(../media/bg-hero-desktop.svg) no-repeat center center/cover;
   background-color: hsl(193, 100%, 96%);
 }
+.navbar{
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+
+}
 /* HEADER */
 header {
   display: flex;
@@ -40,7 +47,7 @@ header div {
   border-radius: 25px;
   font-family: "Poppins";
   width: 168px;
- 
+
 }
 .btn a{
   color: rgb(0, 0, 0);
@@ -52,11 +59,18 @@ header div {
   cursor: pointer;
 } */
 .spinner{
-  
+
   font-size: 2.5rem;
-   background:linear-gradient(to bottom, #b3ffab 0%, #12fff7 100%);; 
+   background:linear-gradient(to bottom, #b3ffab 0%, #12fff7 100%);;
    border-radius:224px ;
-} 
+}
+.hamburger{
+  display: none;
+}
+.close{
+  display: none;
+}
+
 #logo{
 
   filter: drop-shadow(6px 4px 8px grey);
@@ -72,7 +86,7 @@ header div {
   align-items: center;
   display: flex;
   padding-bottom: 40px;
-  margin: 1.46vw 3.66vw;
+  margin: 3.46vw 3.66vw;
 }
 .home-image {
   text-align: end;
@@ -211,7 +225,7 @@ header div {
   border: none;
   border-radius: 55px;
   filter: drop-shadow(0px 3px 2px grey);
-  
+
 }
 
 #feedback div button:hover {
@@ -238,7 +252,7 @@ ul{
 
 /* FOOTER */
 #footer {
-  
+
 
   line-height: 1.35!important;
   padding-top: 4%;
@@ -255,7 +269,7 @@ ul{
   display: flex;
   padding: 35px 25px 25px 25px;
   margin: 0vw 3.22vw;
-  
+
 }
 .footer-logo h1{
   font-size: 3rem;
@@ -334,7 +348,7 @@ ul{
 .nav-link{ border-radius: 45px;
   margin: 3px 19px;
   font-size: 1.25em;
-  text-align: center;
+   text-align: center; 
   padding: 0px 0.5rem!important;
 }
 .nav-link:hover{
@@ -364,7 +378,7 @@ ul{
 }
 #submit:hover{
   opacity: 0.5;
- 
+
 }
 #close{
   background-color: #00252e;
@@ -374,8 +388,8 @@ ul{
   opacity: 0.5;
 }
      /* TIME */
-     .clock { 
-      font-weight: 600;
+     .clock {
+       font-weight: 600;
        opacity: 0.9;
        color: black;
       justify-content: center;
@@ -385,10 +399,10 @@ ul{
       /* font-size: 60px; */
       font-family: Orbitron;
     letter-spacing: 0.389rem;
-    
+
       /* letter-spacing: 7px; */
     }
-   
+
   .even{
       box-shadow: 0 14px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
       padding: 12px;
@@ -397,7 +411,7 @@ ul{
       background-image: linear-gradient(
         180deg
         ,#2af598,#009efd);
-      
+
       /* transform: skew(0, -15deg)  translate(-16rem, -7rem); */
       /* background-color:#0a0a67; */
 

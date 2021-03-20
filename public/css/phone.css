@@ -3,13 +3,32 @@ header div img{
     width: 28vw;
 } 
  
- 
+.hamburger{  margin-bottom: 7px;
+    /* margin: 27px 13px; */
+    display: initial;
+    cursor: pointer; 
+    
+}
+.nav-link{
+    font-size: 2.25em;
+}
+.hamburger i{
+    font-size: 1.145rem;
+    color: black;
+}
+.close{
+    margin-bottom: 10px;
+    /* margin: 27px 13px; */
+     display: none;
+     cursor: pointer; 
+}
     /* HOME */
 #home{
     padding-bottom: 0px;
     flex-direction: column;
     text-align-last: center;
-    margin: 27px;
+    margin: 0 27px 27px 27px;
+    padding-top: 10vw;
  
 }
 #home div h1{
