@@ -3,16 +3,16 @@ const app = express();
 const path = require('path');
 const bodyParser = require("body-parser");
 const hbs = require("hbs");
-let validator = require('validator');
-var nodemailer = require('nodemailer');
+// let validator = require('validator');
+//  var nodemailer = require('nodemailer');
 // const bootstrap = require('bootstrap');
 //  CONNECTION TO DATABASE
 var mongoose = require('mongoose');
 const { Console } = require('console');
 // UTILITIES
-//  "mongodb+srv://kamalkarolya:15034K%40r0lya@registration.bjkkk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+// 
   mongoose
-  .connect( 'mongodb://localhost:27017/test' , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
+  .connect( 'mongodb://localhost:27017/myDatabase' , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
  .then(()=>{
       console.log(`CONNECTED TO THE DATABASE!!`);
 
@@ -34,7 +34,7 @@ const { Console } = require('console');
   app.set("views", template_path);
 
   hbs.registerPartials(partial_path);
-//   Handlebars.registerHelper({navigation:partial , footer"})
+
    
   
   
@@ -120,7 +120,7 @@ const feedbackSchema = new mongoose.Schema({
     }
 });
  const Feedback = new mongoose.model('Feedback', feedbackSchema);
-module.exports = mongoose.model('Feedback',feedbackSchema )
+// module.exports = mongoose.model('Feedback',feedbackSchema )
 
 const registrationSchema = new mongoose.Schema({
     firstname:{
@@ -157,7 +157,7 @@ const registrationSchema = new mongoose.Schema({
         type : String,
         required:true
     },
-    address:{
+    address2:{
         type : String
         
     },
@@ -178,19 +178,20 @@ const registrationSchema = new mongoose.Schema({
   });
 
  const Register = new mongoose.model('Register',registrationSchema );
-// module.exports = mongoose.model('Register',registrationSchema)
-//   EMAIL 
-// var transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//       user: 'kamalkarolya@gmail.com',
-//       pass: 'hzebzrujlpmjgbom'
-//     }
+//  module.exports = mongoose.model('Register',registrationSchema)
+//  
+
+//EMAIL 
+//  var transporter = nodemailer.createTransport({
+//      service: 'gmail',
+//    auth: {
+//        user: 'kamalkarolya@gmail.com',
+//        pass: 'hzebzrujlpmjgbom'   }
 //   });
   
-//   var mailOptions = {
+//  var mailOptions = {
 //     from: 'kamalkarolya@gmail.com',
-//     to: 'kamalkumar_mc20b15_74@dtu.ac.in  ',
+//     // to: 'binduverma67@gmail.com ',
 //     subject: 'Thanks ',
 //     html: '<h1 >Welcome</h1><p>That was easy!</p>'
 //   };
@@ -200,5 +201,5 @@ const registrationSchema = new mongoose.Schema({
 //       console.log(error);
 //     } else {
 //       console.log('Email sent: ' + info.response);
-//     }
-//   });
+//      }
+//    });
