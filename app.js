@@ -109,7 +109,7 @@ const feedbackSchema = new mongoose.Schema({
     femail:{
         type:String,
         required:true,
-        lowercase: true,
+        lowercase: true
     //  validate: (value) => {
     //  return validator.isfemail(value)
     //   }
@@ -120,7 +120,7 @@ const feedbackSchema = new mongoose.Schema({
     }
 });
  const Feedback = new mongoose.model('Feedback', feedbackSchema);
-// module.exports = mongoose.model('Feedback',feedbackSchema )
+ module.exports = mongoose.model('Feedback',feedbackSchema )
 
 const registrationSchema = new mongoose.Schema({
     firstname:{
@@ -178,7 +178,7 @@ const registrationSchema = new mongoose.Schema({
   });
 
  const Register = new mongoose.model('Register',registrationSchema );
-//  module.exports = mongoose.model('Register',registrationSchema)
+  module.exports = mongoose.model('Register',registrationSchema)
 //  
 
 //EMAIL 
