@@ -10,7 +10,7 @@ var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
 const { Console } = require('console');
 // UTILITIES
-//  "mongodb+srv://kamalkarolya:15034K%40r0lya@registration.bjkkk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
   mongoose
   .connect( 'mongodb://localhost:27017/test' , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
  .then(()=>{
@@ -184,7 +184,7 @@ const registrationSchema = new mongoose.Schema({
 //     service: 'gmail',
 //     auth: {
 //       user: 'kamalkarolya@gmail.com',
-//       pass: 'hzebzrujlpmjgbom'
+//       pass: ''
 //     }
 //   });
   
