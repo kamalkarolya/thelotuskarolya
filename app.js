@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require("body-parser");
 const hbs = require("hbs");
+const bcrypt = require('bcryptjs');
 // let validator = require('validator');
 //  var nodemailer = require('nodemailer');
 // const bootstrap = require('bootstrap');
@@ -40,9 +41,7 @@ const { Console } = require('console');
   
   // SERVER PORT NO.
   const port =   process.env.PORT || 3000;
-  app.listen(port, ()=>{
-      console.log(`Server is Running at  http://localhost:${port}/`);
-  })
+ 
  
 //   FILES RENDERING
 app.get('/', (req, res)=>{
@@ -77,6 +76,10 @@ app.get('/our work', (req, res)=>{
     res.render('index')
 
 });
+app.get('/login', (req, res)=>{
+    res.render('login')
+
+});
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -85,7 +88,7 @@ app.use(express.urlencoded({extended:false}));
 app.post('/register', (req, res)=>{
     var myData = new Register(req.body);
     myData.save().then(()=>{
-    res.render('thanks')
+    res.render('login')
     }).catch(()=>{
     res.status(400).render('error')
 })
@@ -98,10 +101,27 @@ app.post('/index', (req, res)=>{
     res.status(400).render('error')
 })
 })
+app.post("/login", async (req,res)=>{
+               try {
+                   const email = req.body.email;
+                   const password = req.body.password;
+                   const userid = await Register.findOne({email:email});
+                //    console.log(userid);
+               if (userid.password===password) {
+                   res.status(200).render('thanks');
+               }else{
+                res.status(404).send("invalid details");
+               }
+                                          
+               } catch (e) {
+                   res.status(400).send("invalid details")
+               }
+})
 
 
-
-
+app.listen(port, ()=>{
+    console.log(`Server is Running at  http://localhost:${port}/`);
+})
 
 // DATABASE SCHEMA
   
@@ -120,7 +140,7 @@ const feedbackSchema = new mongoose.Schema({
     }
 });
  const Feedback = new mongoose.model('Feedback', feedbackSchema);
- module.exports = mongoose.model('Feedback',feedbackSchema )
+//  module.exports = mongoose.model('Feedback',feedbackSchema )
 
 const registrationSchema = new mongoose.Schema({
     firstname:{
@@ -172,13 +192,17 @@ const registrationSchema = new mongoose.Schema({
      pincode:{
          type : Number,
          required:true
+     },
+     password:{
+         type:String,
+         required:true
      }
     
     
   });
 
  const Register = new mongoose.model('Register',registrationSchema );
-  module.exports = mongoose.model('Register',registrationSchema)
+//   module.exports = mongoose.model('Register',registrationSchema)
 //  
 
 //EMAIL 
