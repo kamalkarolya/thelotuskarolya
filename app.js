@@ -11,7 +11,6 @@ const bcrypt = require('bcryptjs');
 var mongoose = require('mongoose');
 const { Console } = require('console');
 // UTILITIES
-// 
   mongoose
   .connect( 'mongodb://localhost:27017/myDatabase' , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
  .then(()=>{
@@ -202,15 +201,14 @@ const registrationSchema = new mongoose.Schema({
   });
 
  const Register = new mongoose.model('Register',registrationSchema );
-//   module.exports = mongoose.model('Register',registrationSchema)
-//  
-
-//EMAIL 
-//  var transporter = nodemailer.createTransport({
-//      service: 'gmail',
-//    auth: {
-//        user: 'kamalkarolya@gmail.com',
-//        pass: 'hzebzrujlpmjgbom'   }
+// module.exports = mongoose.model('Register',registrationSchema)
+//   EMAIL 
+// var transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'kamalkarolya@gmail.com',
+//       pass: ''
+//     }
 //   });
   
 //  var mailOptions = {
@@ -225,5 +223,5 @@ const registrationSchema = new mongoose.Schema({
 //       console.log(error);
 //     } else {
 //       console.log('Email sent: ' + info.response);
-//      }
-//    });
+//     }
+//   });
