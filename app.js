@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -14,7 +15,7 @@ var mongoose = require('mongoose');
 
 // UTILITIES
   mongoose
-  .connect( 'mongodb://localhost:27017/myDatabase' , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
+  .connect( process.env.DATABASE_KEY , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
  .then(()=>{
       console.log(`CONNECTED TO THE DATABASE!!`);
 
@@ -135,6 +136,8 @@ app.post("/login", async (req,res)=>{
                    
                    const userid = await Register.findOne({email:email});
                    const isMatch = await bcrypt.compare(password,userid.password);
+                   const token = await userid.generatetoken();
+                   console.log(`THE TOKEN IS ${token}`);
                 //    console.log(userid);
                if (isMatch) {
                    res.status(200).render('thanks');
@@ -240,7 +243,7 @@ const registrationSchema = new mongoose.Schema({
   registrationSchema.methods.generatetoken = async function(){
       try {
           console.log(this._id);
-          const token = jwt.sign({_id:this._id.toString()},"mynameiskamalkarolyadeveloper");
+          const token = jwt.sign({_id:this._id.toString()},process.env.SECRET_KEY);
           this.tokens =this.tokens.concat({token});
           await this.save();
         //   console.log(tokens);
@@ -269,13 +272,13 @@ const registrationSchema = new mongoose.Schema({
 //     service: 'gmail',
 //     auth: {
 //       user: 'kamalkarolya@gmail.com',
-//       pass: ''
+//       pass: process.env.GOOGLE_KEY
 //     }
 //   });
   
 //  var mailOptions = {
 //     from: 'kamalkarolya@gmail.com',
-//     // to: 'binduverma67@gmail.com ',
+//     // to: '   ',
 //     subject: 'Thanks ',
 //     html: '<h1 >Welcome</h1><p>That was easy!</p>'
 //   };
@@ -291,7 +294,7 @@ const registrationSchema = new mongoose.Schema({
 
 //   *************************EXAMPLE OF JWTJSON WEB TOKEN FOR VERIFICATION*************************8
 // const createToken= async()=>{
-//     const token = await jwt.sign({_id:"608be5033ece062dc800f188"},"mynameiskamalkarolyadeveloper",{
+//     const token = await jwt.sign({_id:"608be5033ece062dc800f188"}," verification key ",{
 //         expiresIn:"2 minutes"
 //     });
 //     console.log(token);
