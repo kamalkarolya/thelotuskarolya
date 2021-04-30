@@ -4,12 +4,14 @@ const path = require('path');
 const bodyParser = require("body-parser");
 const hbs = require("hbs");
 const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
 // let validator = require('validator');
 //  var nodemailer = require('nodemailer');
 // const bootstrap = require('bootstrap');
 //  CONNECTION TO DATABASE
 var mongoose = require('mongoose');
-const { Console } = require('console');
+
+
 // UTILITIES
   mongoose
   .connect( 'mongodb://localhost:27017/myDatabase' , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
@@ -84,14 +86,40 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 
-app.post('/register', (req, res)=>{
-    var myData = new Register(req.body);
-    myData.save().then(()=>{
-    res.render('login')
-    }).catch(()=>{
-    res.status(400).render('error')
+app.post('/register', async(req, res)=>{
+    // var myData = new Register(req.body);
+    // myData.save().then(()=>{
+    // res.render('login')
+    // }).catch(()=>{
+    // res.status(400).render('error')
+   try {
+       const registerPerson = new Register({
+           firstname:req.body.firstname,
+           lastname:req.body.lastname,
+           gender:req.body.gender,
+           dob:req.body.dob ,
+           email:req.body.email,
+           phnumber:req.body.phnumber,
+           address:req.body.address,
+           address2:req.body.address2,
+           state:req.body.state,
+           city:req.body.city,
+           pincode:req.body.pincode,
+           password:req.body.password
+       })
+       console.log(`the data is ${registerPerson}`);
+       const token = await registerPerson.generatetoken();
+       console.log(`THE TOKEN IS ${token}`);
+       const registered = await registerPerson.save();
+       res.status(201).render('login');
+       console.log(registered);
+   } catch (e) {
+       console.log(e);
+       res.status(500).render('error');
+   }
+  
 })
-})
+
 app.post('/index', (req, res)=>{
     var myData = new Feedback(req.body);
     myData.save().then(()=>{
@@ -104,9 +132,11 @@ app.post("/login", async (req,res)=>{
                try {
                    const email = req.body.email;
                    const password = req.body.password;
+                   
                    const userid = await Register.findOne({email:email});
+                   const isMatch = await bcrypt.compare(password,userid.password);
                 //    console.log(userid);
-               if (userid.password===password) {
+               if (isMatch) {
                    res.status(200).render('thanks');
                }else{
                 res.status(404).send("invalid details");
@@ -195,11 +225,43 @@ const registrationSchema = new mongoose.Schema({
      password:{
          type:String,
          required:true
-     }
-    
+     },
+    tokens:[{
+         token:{
+             type:String,
+         required:true
+         }  
+    }]
     
   });
 
+  // GENERATING JWT TOKEN 
+
+  registrationSchema.methods.generatetoken = async function(){
+      try {
+          console.log(this._id);
+          const token = jwt.sign({_id:this._id.toString()},"mynameiskamalkarolyadeveloper");
+          this.tokens =this.tokens.concat({token});
+          await this.save();
+        //   console.log(tokens);
+          return token;
+      } catch (e) {
+          res.send("Error is"+ e);
+           console.log("Error is"+ e);
+      }
+  }
+  //  GENERATING HASH OF PASSWORD
+  registrationSchema.pre("save", async function (next){
+      
+     if(this.isModified("password")){
+
+         this.password = await bcrypt.hash(this.password,10);
+     
+     }
+     
+      next(); 
+
+  })
  const Register = new mongoose.model('Register',registrationSchema );
 // module.exports = mongoose.model('Register',registrationSchema)
 //   EMAIL 
@@ -225,3 +287,15 @@ const registrationSchema = new mongoose.Schema({
 //       console.log('Email sent: ' + info.response);
 //     }
 //   });
+
+
+//   *************************EXAMPLE OF JWTJSON WEB TOKEN FOR VERIFICATION*************************8
+// const createToken= async()=>{
+//     const token = await jwt.sign({_id:"608be5033ece062dc800f188"},"mynameiskamalkarolyadeveloper",{
+//         expiresIn:"2 minutes"
+//     });
+//     console.log(token);
+//      const verifyToken = await jwt.verify(token,"mynameiskamalkarolyadeveloper");
+//      console.log(verifyToken);
+// }
+// createToken();
