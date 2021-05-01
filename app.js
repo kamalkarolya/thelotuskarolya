@@ -1,29 +1,27 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+require('./src/db/conn');
 const path = require('path');
 const bodyParser = require("body-parser");
 const hbs = require("hbs");
+require('./src/models/register');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
+var cookieParser = require('cookie-parser');
+const auth = require('./src/middleware/auth');
+ const Register = require('./src/models/register');
+ const Feedback = require('./src/models/register');
 // let validator = require('validator');
 //  var nodemailer = require('nodemailer');
 // const bootstrap = require('bootstrap');
-//  CONNECTION TO DATABASE
-var mongoose = require('mongoose');
-
-
 // UTILITIES
-  mongoose
-  .connect( process.env.DATABASE_KEY , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
- .then(()=>{
-      console.log(`CONNECTED TO THE DATABASE!!`);
-
-  }).catch((e)=>{
-    console.log(`UNABLE TO CONNECT WITH DATABASE`);
- })
-
+ const port =   process.env.PORT || 3000;
  
+
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+app.use(cookieParser());
 
 
 //  DIRECTORY
@@ -42,7 +40,6 @@ var mongoose = require('mongoose');
   
   
   // SERVER PORT NO.
-  const port =   process.env.PORT || 3000;
  
  
 //   FILES RENDERING
@@ -50,23 +47,25 @@ app.get('/', (req, res)=>{
     res.render('index')
 
 });
-app.get('/register', (req, res)=>{
-    res.render('register')
-
-});
 app.get('/index', (req, res)=>{
     res.render('index')
 
 });
-app.get('/resource', (req, res)=>{
+app.get('/register', (req, res)=>{
+    res.render('register')
+
+});
+
+app.get('/resource', auth , (req, res)=>{
+    console.log(`cokiesssss  ${req.cookies.jwt}`);
     res.render('resource')
 
 });
-app.get('/about', (req, res)=>{
+app.get('/about',auth, (req, res)=>{
     res.render('about')
 
 });
-app.get('/blog', (req, res)=>{
+app.get('/blog', auth ,(req, res)=>{
     res.render('index')
 
 });
@@ -82,9 +81,24 @@ app.get('/login', (req, res)=>{
     res.render('login')
 
 });
+app.get('/logout', auth , async (req, res)=>{
+    try {
 
-app.use(express.json());
-app.use(express.urlencoded({extended:false}));
+        console.log(req.User);
+        // req.User.tokens = req.User.tokens.filter((currElement)=>{
+        //     return currElement.token !== req.token;
+        // })
+        req.User.tokens = [];
+        res.clearCookie("jwt");
+        await req.User.save();
+        res.render('login');
+        
+    } catch (e) {
+        res.status(500).render('error');
+    }
+
+});
+
 
 
 app.post('/register', async(req, res)=>{
@@ -114,6 +128,15 @@ app.post('/register', async(req, res)=>{
        const registered = await registerPerson.save();
        res.status(201).render('login');
        console.log(registered);
+       // storing of cokkie
+       res.cookie('jwt',token
+      // ,{
+        //    expires:new Date(Date().now +1000000),
+        //    httpOnly:true,
+     //         secure:true
+      // }
+       );
+    //    console.log(cookie);
    } catch (e) {
        console.log(e);
        res.status(500).render('error');
@@ -138,6 +161,8 @@ app.post("/login", async (req,res)=>{
                    const isMatch = await bcrypt.compare(password,userid.password);
                    const token = await userid.generatetoken();
                    console.log(`THE TOKEN IS ${token}`);
+                   res.cookie('jwt',token);
+            
                 //    console.log(userid);
                if (isMatch) {
                    res.status(200).render('thanks');
@@ -151,121 +176,9 @@ app.post("/login", async (req,res)=>{
 })
 
 
-app.listen(port, ()=>{
-    console.log(`Server is Running at  http://localhost:${port}/`);
-})
 
 // DATABASE SCHEMA
-  
-const feedbackSchema = new mongoose.Schema({
-    femail:{
-        type:String,
-        required:true,
-        lowercase: true
-    //  validate: (value) => {
-    //  return validator.isfemail(value)
-    //   }
-   },
-   feed:{
-        type:String,
-        required:true
-    }
-});
- const Feedback = new mongoose.model('Feedback', feedbackSchema);
-//  module.exports = mongoose.model('Feedback',feedbackSchema )
-
-const registrationSchema = new mongoose.Schema({
-    firstname:{
-        type : String,
-        required:true
-    },
-    lastname:{
-        type : String,
-        required:true
-    },
-    gender:{
-        type : String,
-        required:true
-    },
-    phnumber:{
-        type : Number,
-        required:true,
-        unique:true
-    },
-    dob:{
-        type : Date,
-        required:true
-    },
-    email:{
-        type : String,
-        required:true,
-        unique:true,
-        lowercase: true
-    // validate: (value) => {
-    //   return validator.isemail(value)
-    // }
-    },
-    address:{
-        type : String,
-        required:true
-    },
-    address2:{
-        type : String
-        
-    },
-    state:{
-        type : String,
-        required:true
-    },
-     city:{
-        type : String,
-        required:true
-    },
-     pincode:{
-         type : Number,
-         required:true
-     },
-     password:{
-         type:String,
-         required:true
-     },
-    tokens:[{
-         token:{
-             type:String,
-         required:true
-         }  
-    }]
-    
-  });
-
-  // GENERATING JWT TOKEN 
-
-  registrationSchema.methods.generatetoken = async function(){
-      try {
-          console.log(this._id);
-          const token = jwt.sign({_id:this._id.toString()},process.env.SECRET_KEY);
-          this.tokens =this.tokens.concat({token});
-          await this.save();
-        //   console.log(tokens);
-          return token;
-      } catch (e) {
-          res.send("Error is"+ e);
-           console.log("Error is"+ e);
-      }
-  }
-  //  GENERATING HASH OF PASSWORD
-  registrationSchema.pre("save", async function (next){
-      
-     if(this.isModified("password")){
-
-         this.password = await bcrypt.hash(this.password,10);
-     
-     }
-     
-      next(); 
-
-  })
- const Register = new mongoose.model('Register',registrationSchema );
+ 
 // module.exports = mongoose.model('Register',registrationSchema)
 //   EMAIL 
 // var transporter = nodemailer.createTransport({
@@ -275,26 +188,26 @@ const registrationSchema = new mongoose.Schema({
 //       pass: process.env.GOOGLE_KEY
 //     }
 //   });
-  
+
 //  var mailOptions = {
-//     from: 'kamalkarolya@gmail.com',
-//     // to: '   ',
+    //     from: 'kamalkarolya@gmail.com',
+    //     // to: '   ',
 //     subject: 'Thanks ',
 //     html: '<h1 >Welcome</h1><p>That was easy!</p>'
 //   };
   
 //   transporter.sendMail(mailOptions, function(error, info){
 //     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log('Email sent: ' + info.response);
+    //       console.log(error);
+    //     } else {
+        //       console.log('Email sent: ' + info.response);
 //     }
 //   });
 
 
 //   *************************EXAMPLE OF JWTJSON WEB TOKEN FOR VERIFICATION*************************8
 // const createToken= async()=>{
-//     const token = await jwt.sign({_id:"608be5033ece062dc800f188"}," verification key ",{
+    //     const token = await jwt.sign({_id:"608be5033ece062dc800f188"}," verification key ",{
 //         expiresIn:"2 minutes"
 //     });
 //     console.log(token);
@@ -302,3 +215,6 @@ const registrationSchema = new mongoose.Schema({
 //      console.log(verifyToken);
 // }
 // createToken();
+app.listen(port, ()=>{
+    console.log(`Server is Running at  http://localhost:${port}/`);
+})
